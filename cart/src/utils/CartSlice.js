@@ -11,6 +11,7 @@ const CartSlice = createSlice({
   initialState,
   reducers: {
     addToGuest: (state, action) => {
+      console.log("guest add");
       const existing = state.guestCart.find(
         (item) => item.id === action.payload,
       );
@@ -20,8 +21,10 @@ const CartSlice = createSlice({
         state.guestCart.push({ ...action.payload, quantity: 1 });
       }
       localStorage.setItem("guestCart", JSON.stringify(state.guestCart));
+      console.log("guest cart");
     },
     loginUser: (state) => {
+      console.log("log in");
       state.isLoggedIn = true;
       state.guestCart.forEach((guestItem) => {
         const existing = state.userCart.find(
